@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import "../styles/main.css";
 import ImageGallery from "react-image-gallery";
+import { Button } from "@mui/material";
+import { Box } from "@mui/system";
 
 const SingleProductPage = () => {
   const images = [

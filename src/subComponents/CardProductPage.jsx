@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/system";
 
-const CartProductPage = () => {
+const CardProductPage = () => {
   return (
     <Box sx={{ padding: "16px", width: "356px", transition: ".3s", "&:hover": { boxShadow: "0px 4px 35px rgba(168, 172, 176, 0.19)" }, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
       <Box sx={{ width: "356px", height: "338px" }} component="img" src="https://via.placeholder.com/300.png/09f/fff" alt="" />
@@ -16,4 +16,4 @@ const CartProductPage = () => {
   );
 };
 
-export default CartProductPage;
+export default CardProductPage;
