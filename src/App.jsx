@@ -9,9 +9,9 @@ const App = () => {
   return (
     <Box sx={{ padding: "0px 10px 10px 101px", fontFamily: "Raleway" }}>
       <HeaderProductsPage />
-      {/* <ProductsPage /> */}
+      <ProductsPage />
       {/* <SingleProductPage /> */}
-      <CartPage />
+      {/* <CartPage /> */}
     </Box>
   );
 };

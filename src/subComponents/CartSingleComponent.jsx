@@ -47,7 +47,7 @@ const CartSingleComponent = () => {
               cursor: "pointer",
             }}
           >
-            <img src="https://img.icons8.com/ios/24/000000/plus-math.png" />{" "}
+            <img src="https://img.icons8.com/ios/24/000000/plus-math.png" />
           </Box>
           <Box>1</Box>
           <Box
@@ -63,7 +63,7 @@ const CartSingleComponent = () => {
               cursor: "pointer",
             }}
           >
-            <img src="https://img.icons8.com/material-outlined/15/000000/minus-math.png" />{" "}
+            <img src="https://img.icons8.com/material-outlined/15/000000/minus-math.png" />
           </Box>
         </Box>
         <Box sx={{ width: "300px" }}>
