@@ -7,11 +7,13 @@ import HeaderProductsPage from "./subComponents/HeaderProductsPage";
 
 const App = () => {
   return (
-    <Box sx={{ padding: "0px 10px 10px 101px", fontFamily: "Raleway" }}>
+    <Box sx={{ fontFamily: "Raleway" }}>
       <HeaderProductsPage />
-      <ProductsPage />
-      {/* <SingleProductPage /> */}
-      {/* <CartPage /> */}
+      <Box sx={{ padding: "80px 10px 10px 101px" }}>
+        <ProductsPage />
+        {/* <SingleProductPage /> */}
+        {/* <CartPage /> */}
+      </Box>
     </Box>
   );
 };
