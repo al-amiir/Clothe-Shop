@@ -4,12 +4,10 @@ import ImageGallery from "react-image-gallery";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 
-const SingleProductPage = ({ singleProductData }) => {
+const SingleProductPage = ({ currency, singleProductData }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
-    console.log(singleProductData.gallery);
     singleProductData.gallery.map((image) => setImages((prev) => [...prev, { original: image, thumbnail: image }]));
-
     return () => {
       setImages([]);
     };
@@ -36,7 +34,7 @@ const SingleProductPage = ({ singleProductData }) => {
         </Box>
         <Box>
           <Box sx={{ fontSize: "18px", fontWeight: "600", marginTop: "43px" }}>PRICE:</Box>
-          <Box sx={{ fontSize: "24px", fontWeight: "600", marginTop: "10px" }}></Box>
+          <Box sx={{ fontSize: "24px", fontWeight: "600", marginTop: "10px" }}>{singleProductData.prices.map((price) => (price.currency.symbol === currency ? price.amount : ""))}</Box>
         </Box>
         <Button sx={{ marginTop: "20px", width: "100%", height: "52px", backgroundColor: "#5ECE7B", color: "white" }}> ADD TO CART</Button>
         <Box sx={{ marginTop: "40px", fontSize: "16px" }}>{singleProductData.description.replace(/<[^>]+>/g, "")}</Box>

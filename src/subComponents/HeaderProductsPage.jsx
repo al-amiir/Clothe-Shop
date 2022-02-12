@@ -6,28 +6,15 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MiniCart from "./MiniCart";
-const HeaderProductsPage = ({ setCurrency }) => {
+const HeaderProductsPage = ({ setCurrency, currency }) => {
   // Left Header
   const [value, setValue] = React.useState(0);
 
-  // Right Header
-  // Menu
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   // Cart
   const [displayCart, setDisplayCart] = React.useState(false);
   function handleDisplayCart() {
     displayCart === false ? setDisplayCart(true) : setDisplayCart(false);
   }
-  useEffect(() => {
-    console.log({ displayCart });
-  }, [displayCart]);
 
   return (
     <>
@@ -54,22 +41,16 @@ const HeaderProductsPage = ({ setCurrency }) => {
         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginRight: "110px" }}>
           {/* Menu */}
           <Box>
-            <Button sx={{ color: "black" }} id="basic-button" aria-controls={open ? "basic-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>
-              $
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuItem onClick={handleClose}>$ USD</MenuItem>
-              <MenuItem onClick={handleClose}>€ EUR</MenuItem>
-              <MenuItem onClick={handleClose}>¥ JPY</MenuItem>
-            </Menu>
+            <label style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "43px" }}>
+              {currency}
+              <select value={currency} onChange={(e) => setCurrency(e.target.value)} style={{ width: "20px", border: "none", backgroundColor: "white", outline: "none" }}>
+                <option value="$">$ USD</option>
+                <option value="£">£ GBP</option>
+                <option value="A$">A$ AUD</option>
+                <option value="¥">¥ JPY</option>
+                <option value="₽">₽ RUB</option>
+              </select>
+            </label>
           </Box>
           {/* Cart  */}
           <Button onClick={handleDisplayCart}>

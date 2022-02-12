@@ -6,7 +6,7 @@ import CardProductPage from "../subComponents/CardProductPage";
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from "@apollo/client";
 import { PRODUCTS } from "../gql";
 
-const ProductsPage = ({ setSingleProductData }) => {
+const ProductsPage = ({ currency, setSingleProductData }) => {
   const { loading, error, data } = useQuery(PRODUCTS);
   useEffect(() => {
     console.log(data);
@@ -20,7 +20,7 @@ const ProductsPage = ({ setSingleProductData }) => {
       <p style={{ fontSize: "42px", fontFamily: "Raleway" }}>{data.category.name}</p>
       <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
         {data.category.products.map((product) => (
-          <CardProductPage key={product.id} productData={product} setSingleProductData={setSingleProductData} />
+          <CardProductPage key={product.id} currency={currency} productData={product} setSingleProductData={setSingleProductData} />
         ))}
       </Box>
     </Box>
