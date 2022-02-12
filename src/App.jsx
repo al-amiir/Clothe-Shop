@@ -10,7 +10,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 const App = () => {
   const [singleProductData, setSingleProductData] = useState({});
-  const [currency, setCurrency] = useState("");
+  const [currency, setCurrency] = useState("$");
 
   return (
     <Box sx={{ fontFamily: "Raleway" }}>
