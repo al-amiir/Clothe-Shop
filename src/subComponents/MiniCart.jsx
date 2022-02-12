@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import MiniCartComponent from "./MiniCartComponent";
 
 const MiniCart = ({ displayCart }) => {
@@ -18,7 +19,9 @@ const MiniCart = ({ displayCart }) => {
         <div>$100</div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "35px", marginBottom: "10px" }}>
-        <button style={{ width: "140px", height: "43px", color: "black", border: "1px solid", borderRadius: "0px" }}>VIEW BAG</button>
+        <Link to="/cart">
+          <button style={{ width: "140px", height: "43px", color: "black", border: "1px solid", borderRadius: "0px" }}>VIEW BAG</button>
+        </Link>
         <button style={{ width: "140px", height: "43px", backgroundColor: "#5ECE7B", color: "white", borderRadius: "0px" }}>CHECK OUT</button>
       </div>
     </div>

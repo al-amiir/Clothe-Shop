@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/main.css";
 import ImageGallery from "react-image-gallery";
-import { Button } from "@mui/material";
-import { Box } from "@mui/system";
 
 const CartSingleComponent = () => {
   const images = [
@@ -20,22 +18,22 @@ const CartSingleComponent = () => {
     },
   ];
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid grey", paddingTop: "20px", marginBottom: "20px" }}>
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #E5E5E5", paddingTop: "20px", marginBottom: "20px" }}>
       {/* Left */}
-      <Box>
-        <Box style={{ fontSize: "30px", fontWeight: "600", marginBottom: "20px" }}>Apollo</Box>
-        <Box sx={{ fontSize: "30px" }}>Running Short</Box>
-        <Box sx={{ fontSize: "24px", fontWeight: "600", marginTop: "10px", marginBottom: "12px" }}>$50.00</Box>
-        <Box>
-          <Button sx={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px" }}>M</Button>
-          <Button sx={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px" }}>L</Button>
-        </Box>
-      </Box>
+      <div>
+        <div style={{ fontSize: "30px", fontWeight: "600", marginBottom: "20px" }}>Apollo</div>
+        <div style={{ fontSize: "30px" }}>Running Short</div>
+        <div style={{ fontSize: "24px", fontWeight: "600", marginTop: "10px", marginBottom: "12px" }}>$50.00</div>
+        <div>
+          <button style={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>M</button>
+          <button style={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>L</button>
+        </div>
+      </div>
       {/* Right */}
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center", marginRight: "12px" }}>
-          <Box
-            sx={{
+      <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center", marginRight: "12px" }}>
+          <div
+            style={{
               border: " 1px solid",
               color: "black",
               width: "45px",
@@ -47,11 +45,11 @@ const CartSingleComponent = () => {
               cursor: "pointer",
             }}
           >
-            <img src="https://img.icons8.com/ios/24/000000/plus-math.png" />
-          </Box>
-          <Box>1</Box>
-          <Box
-            sx={{
+            <img src="https://img.icons8.com/windows/24/000000/plus-math.png" />
+          </div>
+          <div style={{ fontSize: "24px" }}>1</div>
+          <div
+            style={{
               border: " 1px solid",
               color: "black",
               width: "45px",
@@ -63,14 +61,14 @@ const CartSingleComponent = () => {
               cursor: "pointer",
             }}
           >
-            <img src="https://img.icons8.com/material-outlined/15/000000/minus-math.png" />
-          </Box>
-        </Box>
-        <Box sx={{ width: "300px" }}>
-          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} showNav={false} showThumbnails={false} />
-        </Box>
-      </Box>
-    </Box>
+            <img src="https://img.icons8.com/material-sharp/22/000000/minus.png" />
+          </div>
+        </div>
+        <div style={{ width: "300px" }}>
+          <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} showNav={true} showThumbnails={false} />
+        </div>
+      </div>
+    </div>
   );
 };
 
