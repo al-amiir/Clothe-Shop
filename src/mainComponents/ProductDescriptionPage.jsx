@@ -20,9 +20,9 @@ const ProductDescriptionPage = ({ currency, singleProductData }) => {
         <div style={{ fontSize: "30px", fontWeight: "600", marginBottom: "20px" }}>{singleProductData.brand}</div>
         <div style={{ fontSize: "30px" }}>{singleProductData.name}</div>
         <div>
-          <div style={{ fontSize: "18px", fontWeight: "600", marginTop: "43px", marginBottom: "10px" }}>SIZE:</div>
+          {singleProductData.attributes[0]?.items.length > 0 && <div style={{ fontSize: "18px", fontWeight: "600", marginTop: "43px", marginBottom: "10px" }}>SIZE:</div>}
           <div>
-            {singleProductData.attributes[0].items.map((item) => (
+            {singleProductData.attributes[0]?.items?.map((item) => (
               <button style={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>{item.displayValue}</button>
             ))}
           </div>

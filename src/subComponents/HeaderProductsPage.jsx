@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logo";
 import MiniCart from "./MiniCart";
+// Apolo
+import { useQuery } from "@apollo/client";
+import { CATEGORY_NAME } from "../gql";
+const HeaderProductsPage = ({ setCurrency, currency, setCategoryType }) => {
+  const { loading, error, data } = useQuery(CATEGORY_NAME);
+  useEffect(() => {
+    console.log(data?.categories);
+  }, [data]);
 
-const HeaderProductsPage = ({ setCurrency, currency }) => {
   // Left Header
   const [value, setValue] = React.useState(0);
 
@@ -17,15 +24,17 @@ const HeaderProductsPage = ({ setCurrency, currency }) => {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative", zIndex: "200", backgroundColor: "white", padding: "0px 103px 0px 110px" }}>
         {/* Left */}
         <div>
-          <button style={{ fontSize: "16px", padding: "28px 30px 30px 30px", borderBottom: `${value === 0 ? "1px solid #5ECE7B " : "none"}`, color: `${value === 0 ? "#5ECE7B" : "black"}` }} onClick={() => setValue(0)}>
-            WOMEN
-          </button>
-          <button style={{ fontSize: "16px", padding: "28px 30px 30px 30px", borderBottom: `${value === 1 ? "1px solid #5ECE7B" : "none"}`, color: `${value === 1 ? "#5ECE7B" : "black"}` }} onClick={() => setValue(1)}>
-            MEN
-          </button>
-          <button style={{ fontSize: "16px", padding: "28px 30px 30px 30px", borderBottom: `${value === 2 ? "1px solid #5ECE7B" : "none"}`, color: `${value === 2 ? "#5ECE7B" : "black"}` }} onClick={() => setValue(2)}>
-            KIDS
-          </button>
+          {data?.categories?.map((category, i) => (
+            <button
+              style={{ fontSize: "16px", padding: "28px 30px 30px 30px", borderBottom: `${value === i ? "1px solid #5ECE7B " : "none"}`, color: `${value === i ? "#5ECE7B" : "black"}` }}
+              onClick={() => {
+                setValue(i);
+                setCategoryType(category.name);
+              }}
+            >
+              {category.name.toUpperCase()}
+            </button>
+          ))}
         </div>
         {/* Center */}
         <Logo />

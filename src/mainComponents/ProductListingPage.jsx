@@ -4,8 +4,10 @@ import CardProductPage from "../subComponents/CardProductPage";
 import { useQuery } from "@apollo/client";
 import { PRODUCTS } from "../gql";
 
-const ProductLisitingPage = ({ currency, setSingleProductData }) => {
-  const { loading, error, data } = useQuery(PRODUCTS);
+const ProductLisitingPage = ({ currency, setSingleProductData, categoryType }) => {
+  const { loading, error, data } = useQuery(PRODUCTS, {
+    variables: { type: `${categoryType}` },
+  });
   useEffect(() => {
     console.log(data);
   }, [data]);
