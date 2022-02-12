@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MiniCart from "./MiniCart";
-const HeaderProductsPage = () => {
+const HeaderProductsPage = ({ setCurrency }) => {
   // Left Header
   const [value, setValue] = React.useState(0);
 
@@ -51,7 +51,7 @@ const HeaderProductsPage = () => {
           <img src="https://img.icons8.com/color/48/000000/shopify.png" />
         </Box>
         {/* Right */}
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginRight: "30px" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginRight: "110px" }}>
           {/* Menu */}
           <Box>
             <Button sx={{ color: "black" }} id="basic-button" aria-controls={open ? "basic-menu" : undefined} aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick}>

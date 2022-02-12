@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/main.css";
 import ImageGallery from "react-image-gallery";
 import { Button } from "@mui/material";

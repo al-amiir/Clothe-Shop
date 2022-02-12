@@ -10,17 +10,14 @@ import { Routes, Route, Link } from "react-router-dom";
 
 const App = () => {
   const [singleProductData, setSingleProductData] = useState({});
-  useEffect(() => {
-    console.log(singleProductData);
-  }, [singleProductData]);
-
+  const [currency, setCurrency] = useState("");
   return (
     <Box sx={{ fontFamily: "Raleway" }}>
-      <HeaderProductsPage />
+      <HeaderProductsPage setCurrency={setCurrency} />
       <Box sx={{ padding: "80px 10px 10px 101px" }}>
         <Routes>
           <Route path="/" element={<ProductsPage setSingleProductData={setSingleProductData} />} />
-          <Route path={`/${singleProductData.id}`} element={<SingleProductPage />} />
+          <Route path={`/${singleProductData.id}`} element={<SingleProductPage singleProductData={singleProductData} />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Box>
