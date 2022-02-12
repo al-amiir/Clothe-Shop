@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import CartPage from "./mainComponents/CartPage";
-import ProductsPage from "./mainComponents/ProductsPage";
+import ProductListingPage from "./mainComponents/ProductListingPage";
 import SingleProductPage from "./mainComponents/SingleProductPage";
 import HeaderProductsPage from "./subComponents/HeaderProductsPage";
 
@@ -17,7 +17,7 @@ const App = () => {
       <HeaderProductsPage setCurrency={setCurrency} currency={currency} />
       <Box sx={{ padding: "80px 10px 10px 101px" }}>
         <Routes>
-          <Route path="/" element={<ProductsPage setSingleProductData={setSingleProductData} currency={currency} />} />
+          <Route path="/" element={<ProductListingPage setSingleProductData={setSingleProductData} currency={currency} />} />
           <Route path={`/${singleProductData.id}`} element={<SingleProductPage singleProductData={singleProductData} currency={currency} />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
