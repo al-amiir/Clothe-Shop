@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import MiniCart from "./MiniCart";
 // Apolo
@@ -6,6 +6,8 @@ import { useQuery } from "@apollo/client";
 import { CATEGORY_NAME } from "../gql";
 const HeaderProductsPage = ({ setCurrency, currency, setCategoryType, cartData, setCartData }) => {
   const { loading, error, data } = useQuery(CATEGORY_NAME);
+  const [condition, setCondition] = useState("none");
+  useEffect(() => {}, [condition]);
 
   // Left Header
   const [value, setValue] = React.useState(0);
@@ -18,7 +20,7 @@ const HeaderProductsPage = ({ setCurrency, currency, setCategoryType, cartData, 
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative", zIndex: "200", backgroundColor: "white", padding: "0px 103px 0px 110px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative", zIndex: "200", backgroundColor: "white", padding: "0px 103px 0px 110px", zIndex: 2000 }}>
         {/* Left */}
         <div>
           {data?.categories?.map((category, i) => (
@@ -41,13 +43,28 @@ const HeaderProductsPage = ({ setCurrency, currency, setCategoryType, cartData, 
           <div>
             <label style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "43px", fontWeight: "600" }}>
               {currency}
-              <select value={currency} onChange={(e) => setCurrency(e.target.value)} style={{ width: "20px", border: "none", backgroundColor: "white", outline: "none", cursor: "pointer" }}>
-                <option value="$">$ USD</option>
-                <option value="£">£ GBP</option>
-                <option value="A$">A$ AUD</option>
-                <option value="¥">¥ JPY</option>
-                <option value="₽">₽ RUB</option>
-              </select>
+              <div style={{ position: "relative" }}>
+                <button onClick={() => setCondition((prev) => (prev === "none" ? setCondition("flex") : setCondition("none")))}>
+                  <img src="https://img.icons8.com/material-outlined/20/000000/expand-arrow.png" />
+                </button>
+                <div style={{ display: `${condition}`, flexDirection: "column", justifyContent: "center", alignItems: "center", position: "absolute", left: "-41px", top: "26px", width: "100px", padding: "7px", fontWeight: 500, boxShadow: "0 0 13px #0000001c", zIndex: "2000", borderRadius: "5px" }}>
+                  <p style={{ cursor: "pointer" }} onClick={(e) => setCurrency("$")}>
+                    $ USD
+                  </p>
+                  <p style={{ cursor: "pointer" }} onClick={(e) => setCurrency("£")}>
+                    £ GBP
+                  </p>
+                  <p style={{ cursor: "pointer" }} onClick={(e) => setCurrency("A$")}>
+                    A$ AUD
+                  </p>
+                  <p style={{ cursor: "pointer" }} onClick={(e) => setCurrency("¥")}>
+                    ¥ JPY
+                  </p>
+                  <p style={{ cursor: "pointer" }} onClick={(e) => setCurrency("₽")}>
+                    ₽ RUB
+                  </p>
+                </div>
+              </div>
             </label>
           </div>
           {/* Cart  */}

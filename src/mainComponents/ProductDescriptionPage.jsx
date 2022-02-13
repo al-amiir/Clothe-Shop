@@ -22,7 +22,7 @@ const ProductDescriptionPage = ({ currency, singleProductData, cartData, setCart
 
   return (
     <>
-      <Link to="/" style={{ textDecoration: "none", position: "fixed", top: "13px", left: "31px", zIndex: "1000" }}>
+      <Link to="/" style={{ textDecoration: "none", position: "fixed", top: "13px", left: "31px", zIndex: "2000" }}>
         <img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/50/000000/external-left-arrows-kmg-design-glyph-kmg-design-1.png" />
       </Link>
       <div style={{ display: "flex", marginBottom: "73px", height: "90vh", paddingRight: "100px" }}>
