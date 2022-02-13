@@ -4,19 +4,21 @@ import MiniCartComponent from "./MiniCartComponent";
 
 const MiniCart = ({ displayCart, cartData, setCartData, currency }) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
   useEffect(() => {
     setTotalPrice(0);
-    Object.keys(cartData).map((data) =>
-      //   (data) => console.log(cartData[data])
-      cartData[data].prices.map((price) => price.currency.symbol === currency && setTotalPrice((prev) => prev + price.amount * cartData[data].quantity))
-    );
+    setTotalQuantity(0);
+    Object.keys(cartData).map((data) => {
+      setTotalQuantity((prev) => prev + cartData[data].quantity);
+      cartData[data].prices.map((price) => price.currency.symbol === currency && setTotalPrice((prev) => prev + price.amount * cartData[data].quantity));
+    });
     console.log(totalPrice);
   }, [currency, cartData]);
 
   return (
     <div style={{ display: `${displayCart === false ? "none" : "block"}`, width: "288px", position: "absolute", top: "12vh", right: "87px", zIndex: 100, backgroundColor: "white", padding: "16px" }}>
       <div style={{ display: "flex" }}>
-        <div style={{ marginRight: "5px", fontWeight: "600" }}>My Bag, </div> 2 Items
+        <div style={{ marginRight: "5px", fontWeight: "600" }}>My Bag, </div> {totalQuantity} Items
       </div>
 
       {Object.keys(cartData).map((data) => (

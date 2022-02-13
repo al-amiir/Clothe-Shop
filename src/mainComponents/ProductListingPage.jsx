@@ -13,8 +13,8 @@ const ProductLisitingPage = ({ currency, setSingleProductData, categoryType, set
   if (error) return <p>Error :(</p>;
   return (
     <div>
-      <p style={{ fontSize: "42px", fontFamily: "Raleway", margin: "0px 0px 103px 0px" }}>{data.category.name}</p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+      <p style={{ fontSize: "42px", fontFamily: "Raleway", margin: "0px 0px 103px 0px" }}>{data.category.name.toUpperCase()}</p>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 356px)", gridGap: "40px" }}>
         {data.category.products.map((product) => (
           <CardProductPage key={product.id} currency={currency} productData={product} setSingleProductData={setSingleProductData} setCartData={setCartData} setCartSuccessMessage={setCartSuccessMessage} />
         ))}
