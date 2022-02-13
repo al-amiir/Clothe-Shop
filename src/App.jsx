@@ -16,6 +16,10 @@ const App = () => {
   const [cartSuccessMessage, setCartSuccessMessage] = useState("none");
   const [currency, setCurrency] = useState("$");
 
+  useEffect(() => {
+    console.log({ cartData });
+  }, [cartData]);
+
   return (
     <Box sx={{ fontFamily: "Raleway" }}>
       <HeaderProductsPage setCurrency={setCurrency} currency={currency} setCategoryType={setCategoryType} setCartData={setCartData} cartData={cartData} />
@@ -24,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<ProductListingPage setSingleProductData={setSingleProductData} currency={currency} categoryType={categoryType} setCartData={setCartData} setCartSuccessMessage={setCartSuccessMessage} />} />
           <Route path={`/${singleProductData.id}`} element={<ProductDescriptionPage singleProductData={singleProductData} currency={currency} setCartData={setCartData} setCartSuccessMessage={setCartSuccessMessage} />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart" element={<CartPage currency={currency} cartData={cartData} setCartData={setCartData} />} />
         </Routes>
       </Box>
     </Box>

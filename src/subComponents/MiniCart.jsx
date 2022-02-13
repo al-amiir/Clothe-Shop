@@ -14,7 +14,7 @@ const MiniCart = ({ displayCart, cartData, setCartData, currency }) => {
   }, [currency, cartData]);
 
   return (
-    <div style={{ display: `${displayCart === false ? "none" : "block"}`, width: "288px", position: "absolute", top: "12vh", right: "87px", zIndex: 2, backgroundColor: "white", padding: "16px" }}>
+    <div style={{ display: `${displayCart === false ? "none" : "block"}`, width: "288px", position: "absolute", top: "12vh", right: "87px", zIndex: 100, backgroundColor: "white", padding: "16px" }}>
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: "5px", fontWeight: "600" }}>My Bag, </div> 2 Items
       </div>

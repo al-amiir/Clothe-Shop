@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 const MiniCartComponent = ({ cartData, setCartData, currency }) => {
   const [counter, setCounter] = useState(cartData.quantity);
+  useEffect(() => {
+    setCounter(cartData.quantity);
+  }, [cartData.quantity]);
+
   function handleQuantityPlus() {
     setCounter((prev) => prev + 1);
   }
@@ -17,12 +21,13 @@ const MiniCartComponent = ({ cartData, setCartData, currency }) => {
       {/* Left */}
       <div style={{ display: "flex", justifyContent: "space-between", flexDirection: "column", width: "132px" }}>
         <div>
+          <div style={{ fontSize: "16px", marginBottom: "10px" }}>{cartData.brand}</div>
           <div style={{ fontSize: "16px", marginBottom: "10px" }}>{cartData.name}</div>
           <div style={{ fontSize: "16px", marginTop: "15px", marginBottom: "12px", fontWeight: "600" }}> {cartData.prices.map((price) => (price.currency.symbol === currency ? price.amount : ""))}</div>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
           {cartData.attributes[0]?.items?.map((item) => (
-            <button style={{ borderRadius: "0px", color: "black", fontSize: "15px", height: "24px", border: "1px solid", marginRight: "10px", marginBottom: "4px", padding: "4px", display: "flex", justifyContent: "center", alignItems: "center" }}>{item.displayValue}</button>
+            <button style={{ borderRadius: "0px", color: "black", fontSize: "15px", height: "24px", border: "1px solid", marginRight: "10px", marginTop: "4px", padding: "4px", display: "flex", justifyContent: "center", alignItems: "center" }}>{item.displayValue}</button>
           ))}
         </div>
       </div>
