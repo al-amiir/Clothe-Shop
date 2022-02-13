@@ -4,11 +4,8 @@ import MiniCart from "./MiniCart";
 // Apolo
 import { useQuery } from "@apollo/client";
 import { CATEGORY_NAME } from "../gql";
-const HeaderProductsPage = ({ setCurrency, currency, setCategoryType }) => {
+const HeaderProductsPage = ({ setCurrency, currency, setCategoryType, cartData, setCartData }) => {
   const { loading, error, data } = useQuery(CATEGORY_NAME);
-  useEffect(() => {
-    console.log(data?.categories);
-  }, [data]);
 
   // Left Header
   const [value, setValue] = React.useState(0);
@@ -60,7 +57,7 @@ const HeaderProductsPage = ({ setCurrency, currency, setCategoryType }) => {
         </div>
       </div>
       <div style={{ display: `${displayCart ? "block" : "none"}`, position: "fixed", top: "0", left: "0", zIndex: 1, width: "100vw", height: "100vh", backgroundColor: "rgba(57, 55, 72, 0.22)" }}></div>
-      <MiniCart displayCart={displayCart} />
+      <MiniCart displayCart={displayCart} currency={currency} cartData={cartData} setCartData={setCartData} />
     </>
   );
 };

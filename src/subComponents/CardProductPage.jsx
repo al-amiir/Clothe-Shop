@@ -2,7 +2,14 @@ import React from "react";
 // React Router
 import { Link } from "react-router-dom";
 
-const CardProductPage = ({ currency, productData, setSingleProductData }) => {
+const CardProductPage = ({ currency, productData, setSingleProductData, setCartData, setCartSuccessMessage }) => {
+  function handleAddToCart() {
+    setCartData((prev) => ({
+      ...prev,
+      [productData.id]: { ...productData, quantity: 1 },
+    }));
+    setCartSuccessMessage("block");
+  }
   return (
     <div style={{ padding: "16px", width: "356px", transition: ".3s", "&:hover": { divShadow: "0px 4px 35px rgb(168 172 176 / 49%)" }, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", marginBottom: "103px", marginRight: "40px" }}>
       <Link to={`/${productData.id}`} style={{ textDecoration: "none" }}>
@@ -14,7 +21,7 @@ const CardProductPage = ({ currency, productData, setSingleProductData }) => {
           <span style={{ marginRight: "5px" }}>{currency}</span>
           {productData.prices.map((price) => (price.currency.symbol === currency ? price.amount : ""))}
         </div>
-        <div style={{ position: "absolute", top: "-24px", right: "12px", backgroundColor: "#5ECE7B", padding: "10px", clipPath: "circle(45%)", overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center", cursor: "pointer" }}>
+        <div onClick={handleAddToCart} style={{ position: "absolute", top: "-24px", right: "12px", backgroundColor: "#5ECE7B", padding: "10px", clipPath: "circle(45%)", overflow: "hidden", display: "flex", justifyContent: "center", alignItems: "center", cursor: "pointer" }}>
           <img src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v1.png" />
         </div>
       </div>

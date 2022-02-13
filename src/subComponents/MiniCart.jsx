@@ -1,22 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MiniCartComponent from "./MiniCartComponent";
 
-const MiniCart = ({ displayCart }) => {
+const MiniCart = ({ displayCart, cartData, setCartData, currency }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
-    console.log("d", displayCart == true);
-  }, [displayCart]);
+    setTotalPrice(0);
+    Object.keys(cartData).map((data) =>
+      //   (data) => console.log(cartData[data])
+      cartData[data].prices.map((price) => price.currency.symbol === currency && setTotalPrice((prev) => prev + price.amount * cartData[data].quantity))
+    );
+    console.log(totalPrice);
+  }, [currency, cartData]);
 
   return (
     <div style={{ display: `${displayCart === false ? "none" : "block"}`, width: "288px", position: "absolute", top: "12vh", right: "87px", zIndex: 2, backgroundColor: "white", padding: "16px" }}>
       <div style={{ display: "flex" }}>
         <div style={{ marginRight: "5px", fontWeight: "600" }}>My Bag, </div> 2 Items
       </div>
-      <MiniCartComponent />
-      <MiniCartComponent />
+
+      {Object.keys(cartData).map((data) => (
+        <MiniCartComponent key={data} cartData={cartData[data]} setCartData={setCartData} currency={currency} />
+      ))}
+
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontWeight: "600", marginTop: "52px" }}>
         <div>Total</div>
-        <div>$100</div>
+        <div>
+          {`${currency} `}
+          {totalPrice.toFixed(2)}
+        </div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "35px", marginBottom: "10px" }}>
         <Link to="/cart">
