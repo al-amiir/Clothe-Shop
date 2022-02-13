@@ -40,7 +40,7 @@ const CartSingleComponent = ({ cartData, setCartData, currency }) => {
         </div>
         <div style={{ marginTop: "23px" }}>
           {cartData.attributes[0]?.items?.map((item) => (
-            <button style={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>{item.displayValue}</button>
+            <button style={{ filter: `${cartData.sizes.includes(item.id) ? "invert(1)" : "invert(0)"}`, backgroundColor: "white", cursor: "pointer", color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>{item.displayValue}</button>
           ))}
         </div>
       </div>

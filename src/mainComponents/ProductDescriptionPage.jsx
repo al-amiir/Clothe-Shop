@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/main.css";
 import ImageGallery from "react-image-gallery";
 
-const ProductDescriptionPage = ({ currency, singleProductData, setCartData, setCartSuccessMessage }) => {
+const ProductDescriptionPage = ({ currency, singleProductData, cartData, setCartData, setCartSuccessMessage }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     singleProductData.gallery.map((image) => setImages((prev) => [...prev, { original: image, thumbnail: image }]));
@@ -31,7 +31,7 @@ const ProductDescriptionPage = ({ currency, singleProductData, setCartData, setC
           {singleProductData.attributes[0]?.items.length > 0 && <div style={{ fontSize: "18px", fontWeight: "600", marginTop: "43px", marginBottom: "10px" }}>SIZE:</div>}
           <div>
             {singleProductData.attributes[0]?.items?.map((item) => (
-              <button style={{ color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>{item.displayValue}</button>
+              <button style={{ filter: `${cartData[singleProductData.id].sizes.includes(item.id) ? "invert(1)" : "invert(0)"}`, cursor: "default", backgroundColor: "white", color: "black", border: "1px solid black", width: "63px", height: "45px", borderRadius: "0px", marginRight: "5px", fontSize: "16px" }}>{item.displayValue}</button>
             ))}
           </div>
         </div>

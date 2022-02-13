@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 const MiniCartComponent = ({ cartData, setCartData, currency }) => {
   const [counter, setCounter] = useState(cartData.quantity);
+  const [selectedSizes, setSelectedSizes] = useState(cartData.sizes || []);
+
   useEffect(() => {
     setCounter(cartData.quantity);
   }, [cartData.quantity]);
@@ -14,6 +16,9 @@ const MiniCartComponent = ({ cartData, setCartData, currency }) => {
   useEffect(() => {
     setCartData((prev) => ({ ...prev, [cartData.id]: { ...cartData, quantity: counter } }));
   }, [counter]);
+  useEffect(() => {
+    setCartData((prev) => ({ ...prev, [cartData.id]: { ...cartData, sizes: selectedSizes } }));
+  }, [selectedSizes]);
 
   if (cartData.quantity <= 0) return "";
   return (
@@ -27,7 +32,14 @@ const MiniCartComponent = ({ cartData, setCartData, currency }) => {
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
           {cartData.attributes[0]?.items?.map((item) => (
-            <button style={{ borderRadius: "0px", color: "black", fontSize: "15px", height: "24px", border: "1px solid", marginRight: "10px", marginTop: "4px", padding: "4px", display: "flex", justifyContent: "center", alignItems: "center" }}>{item.displayValue}</button>
+            <button
+              onClick={() => {
+                selectedSizes.includes(item.id) ? setSelectedSizes((prev) => prev.filter((p) => p !== item.id)) : setSelectedSizes((prev) => [...prev, item.id]);
+              }}
+              style={{ backgroundColor: `${cartData.sizes?.includes(item.id) ? "black" : "white"}`, color: `${cartData.sizes?.includes(item.id) ? "white" : "black"}`, borderRadius: "0px", fontSize: "15px", height: "24px", border: "1px solid black", marginRight: "10px", marginTop: "4px", padding: "4px", display: "flex", justifyContent: "center", alignItems: "center" }}
+            >
+              {item.displayValue}
+            </button>
           ))}
         </div>
       </div>
