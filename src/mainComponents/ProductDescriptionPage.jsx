@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/main.css";
 import ImageGallery from "react-image-gallery";
 
-const ProductDescriptionPage = ({ currency, singleProductData }) => {
+const ProductDescriptionPage = ({ currency, singleProductData, setCartData, setCartSuccessMessage }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     singleProductData.gallery.map((image) => setImages((prev) => [...prev, { original: image, thumbnail: image }]));
@@ -10,6 +10,14 @@ const ProductDescriptionPage = ({ currency, singleProductData }) => {
       setImages([]);
     };
   }, [singleProductData]);
+
+  function handleAddToCart() {
+    setCartData((prev) => ({
+      ...prev,
+      [singleProductData.id]: { ...singleProductData, quantity: 1 },
+    }));
+    setCartSuccessMessage("block");
+  }
 
   return (
     <div style={{ display: "flex", marginBottom: "73px", height: "90vh", paddingRight: "100px" }}>
@@ -31,7 +39,9 @@ const ProductDescriptionPage = ({ currency, singleProductData }) => {
           <div style={{ fontSize: "18px", fontWeight: "600", marginTop: "43px" }}>PRICE:</div>
           <div style={{ fontSize: "24px", fontWeight: "600", marginTop: "10px" }}>{singleProductData.prices.map((price) => (price.currency.symbol === currency ? price.amount : ""))}</div>
         </div>
-        <button style={{ marginTop: "20px", width: "100%", height: "52px", backgroundColor: "#5ECE7B", color: "white" }}> ADD TO CART</button>
+        <button onClick={handleAddToCart} style={{ marginTop: "20px", width: "100%", height: "52px", backgroundColor: "#5ECE7B", color: "white" }}>
+          ADD TO CART
+        </button>
         <div style={{ marginTop: "40px", fontSize: "16px" }}>{singleProductData.description.replace(/<[^>]+>/g, "")}</div>
       </div>
     </div>

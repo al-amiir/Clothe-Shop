@@ -23,7 +23,7 @@ const App = () => {
       <Box sx={{ padding: "80px 10px 10px 101px" }}>
         <Routes>
           <Route path="/" element={<ProductListingPage setSingleProductData={setSingleProductData} currency={currency} categoryType={categoryType} setCartData={setCartData} setCartSuccessMessage={setCartSuccessMessage} />} />
-          <Route path={`/${singleProductData.id}`} element={<ProductDescriptionPage singleProductData={singleProductData} currency={currency} />} />
+          <Route path={`/${singleProductData.id}`} element={<ProductDescriptionPage singleProductData={singleProductData} currency={currency} setCartData={setCartData} setCartSuccessMessage={setCartSuccessMessage} />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Box>
