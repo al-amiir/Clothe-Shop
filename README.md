@@ -1,4 +1,4 @@
-# Clothe Shop
+# SwiftX Shop
 
 an Ecommerce web app that fetch data from the GraphQL endpoint and to provide an interface to view and interact with this data.
 
