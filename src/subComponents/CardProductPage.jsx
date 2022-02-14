@@ -11,7 +11,7 @@ const CardProductPage = ({ currency, productData, setSingleProductData, setCartD
     setCartSuccessMessage("block");
   }
   return (
-    <div style={{ padding: "16px", width: "356px", transition: ".3s", "&:hover": { divShadow: "0px 4px 35px rgb(168 172 176 / 49%)" }, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", marginBottom: "103px", marginRight: "40px" }}>
+    <div className="cardProduct" style={{ padding: "16px", width: "356px", transition: ".3s", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", marginBottom: "103px", marginRight: "40px" }}>
       <Link to={`/${productData.id}`} style={{ textDecoration: "none" }}>
         <img style={{ width: "356px", height: "338px", objectFit: "cover", objectPosition: "top", border: "1px solid #e5e9ea87" }} src={productData.gallery[0]} alt="" onClick={() => setSingleProductData(productData)} />
       </Link>

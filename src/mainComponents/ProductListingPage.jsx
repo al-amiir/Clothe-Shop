@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CardProductPage from "../subComponents/CardProductPage";
 // Apolo
 import { useQuery } from "@apollo/client";
