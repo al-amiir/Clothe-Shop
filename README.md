@@ -1,6 +1,6 @@
 # SwiftX Shop
 
-an Ecommerce web app that fetch data from the GraphQL endpoint and to provide an interface to view and interact with this data.
+an E-commerce web app that fetches data from the GraphQL endpoint and provides an interface to view and interact with this data.
 
 Functionality requirements
 
