@@ -16,7 +16,11 @@ Details:
 - selected options of added to cart products are visible in cart overlay and in cart page.
 - Ability to change currency of the store to one of the available currencies
 
-# Setup
+Video: 
+You could watch through my youtube channel a quick video about it, https://www.youtube.com/watch?v=2NCkstSViic# Setup
+
+LinkedIn post: 
+https://www.linkedin.com/posts/al-amiir_ecommercewebsite-graphql-frontenddevelopment-activity-6904361737160667136-7zqV
 
 ## Run Server
 
